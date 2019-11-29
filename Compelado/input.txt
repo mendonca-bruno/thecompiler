@@ -1,7 +1,52 @@
+int y = 50;
 
 int func(int x;int y){
     int x = 10;
     int j = 20 + 20;
+    int k;
+    double x;
+    x = 10;
+    double y = 20.5;
+    return 10;
 }
 
-int y = 50;
+void foo(int val){
+    string a = "teco teco";
+    string b;
+    b = "teste";
+    print("abacaxi: " + x + "abacate" + y);
+    print("banana");
+    print(x);
+}
+
+void main(0){
+    print("Hello world");
+    return 0;
+}
+
+void scanear(0){
+    int x;
+    read x;
+    read string a;
+}
+
+void ifstatement(0){
+    int x = 10;
+    int y = 20;
+    if((x>y)||((x*y)>y)){
+        print("boom roasted");
+    }
+    else{
+        print("get out of here");
+    }
+    if(!x){
+        print("bananada");
+    }
+}
+
+void loopWhile(0){
+    while(x>10){
+        print(x);
+        x=x+1;
+    }
+}
