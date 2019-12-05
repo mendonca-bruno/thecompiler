@@ -1,3 +1,6 @@
+import <file.gramaticaextensao>;
+import <file2.gramaticaextensao>;
+
 int y = 50;
 
 int func(int x;int y){
@@ -49,4 +52,20 @@ void loopWhile(0){
         print(x);
         x=x+1;
     }
+    while((x<10) && (x!=9)){
+        print(x);
+    }
+}
+
+void loopFor(0){
+    for(int x = 10; x<10; x=x+1){
+        print("bananada de goiaba");
+    }
+    
+    for(y=10; ((y<10)&&(y>5)); y=y+1){
+        print(y);
+    }
+
+    boolean verdade = true;
+    verdade = false;
 }

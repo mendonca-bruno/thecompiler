@@ -7,7 +7,8 @@ grammar myGram;
     package gramaticona;
 }
 
-prog:   (line EOL | func prog)* EOF
+prog:   (line EOL | func)+ EOF
+        | IMPORT '<' VAR'.'GRAMATICA'>'';' prog
         ;
 line:   atr
         | init_
@@ -22,8 +23,11 @@ cmd:    atr EOL
         | read EOL
         | ifstmt
         | while_
+        | for_
         ;
 while_: WHILE '(' cond ')' OBR (cmd)+ CBR
+        ;
+for_:   FOR '(' (atr|init_) ';' cond ';'  atr')' OBR (cmd)+ CBR
         ;
 ifstmt: IF '(' cond ')' OBR (cmd)+ CBR
         | IF '(' (VAR|'!'VAR) ')' OBR (cmd)+ CBR
@@ -60,8 +64,10 @@ atr:    INT VAR '=' expr
         | DOUBLE VAR '=' expr
         | FLOAT VAR '=' expr
         | STRING VAR '=' STRVALUE
+        | BOOL  VAR '=' (TRUE|FALSE)
         | VAR '=' expr
         | VAR '=' STRVALUE 
+        | VAR '=' (TRUE|FALSE)
         ;
 expr:   term
         | expr '+' term
@@ -80,8 +86,13 @@ type_:   INT
         | DOUBLE
         | FLOAT
         | STRING
+        | BOOL 
         ;
-
+GRAMATICA: 'gramaticaextensao';
+IMPORT: 'import';
+TRUE:   'true';
+FALSE:  'false';
+FOR:    'for';
 WHILE:  'while';
 GRT:    '>';
 LESS:   '<';
@@ -100,6 +111,7 @@ FLOAT : 'float';
 DOUBLE : 'double';
 STRING : 'string';
 VOID : 'void';
+BOOL :  'boolean';
 READ : 'read';
 RET : 'return';
 OBR :   '{';
