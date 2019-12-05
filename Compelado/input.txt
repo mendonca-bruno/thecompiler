@@ -24,6 +24,8 @@ void foo(int val){
 
 void main(0){
     print("Hello world");
+    int y = foo(10);
+    scanear();
     return 0;
 }
 
@@ -68,4 +70,6 @@ void loopFor(0){
 
     boolean verdade = true;
     verdade = false;
+
+    loopWhile();
 }

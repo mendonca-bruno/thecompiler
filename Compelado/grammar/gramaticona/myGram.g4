@@ -12,6 +12,7 @@ prog:   (line EOL | func)+ EOF
         ;
 line:   atr
         | init_
+        | callfunc
         ;
 func:   type_ VAR '(' (((type_ VAR)';'?)+|'0') ')' OBR (cmd)+ retr CBR
         | VOID VAR '(' (((type_ VAR)';'?)+|'0') ')' OBR (cmd)+ CBR
@@ -24,7 +25,11 @@ cmd:    atr EOL
         | ifstmt
         | while_
         | for_
+        | callfunc EOL
         ;
+callfunc:   VAR'(' ((VAR|NUM)','?)+ ')'
+            | VAR '('')'          
+            ;
 while_: WHILE '(' cond ')' OBR (cmd)+ CBR
         ;
 for_:   FOR '(' (atr|init_) ';' cond ';'  atr')' OBR (cmd)+ CBR
@@ -60,13 +65,13 @@ init_: type_ VAR
 retr:   RET VAR EOL
         | RET expr EOL
         ;
-atr:    INT VAR '=' expr
-        | DOUBLE VAR '=' expr
-        | FLOAT VAR '=' expr
-        | STRING VAR '=' STRVALUE
+atr:    INT VAR '=' (expr|callfunc)
+        | DOUBLE VAR '=' (expr|callfunc)
+        | FLOAT VAR '=' (expr|callfunc)
+        | STRING VAR '=' (STRVALUE|callfunc)
         | BOOL  VAR '=' (TRUE|FALSE)
-        | VAR '=' expr
-        | VAR '=' STRVALUE 
+        | VAR '=' (expr|callfunc)
+        | VAR '=' (STRVALUE|callfunc) 
         | VAR '=' (TRUE|FALSE)
         ;
 expr:   term
